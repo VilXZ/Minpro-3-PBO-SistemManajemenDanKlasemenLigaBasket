@@ -68,4 +68,60 @@ Inheritance diterapkan pada class `Pertandingan` sebagai Parent dengan `Pertandi
 
 ## Overriding dan Overloading
 
-Overriding dan Overloading diterapkan pada subclass PertandinganLiga dan PertandinganFinal tetapi belum sepenuhnya dimanfaatkan atau diterapkan.
+Overriding dan Overloading diterapkan pada subclass PertandinganLiga dan PertandinganFinal, intinya berkaitan dengan Pertandingan.
+
+Overriding diterapkan pada method `getInfoPertandingan()` yang terdapat pada abstract class `Pertandingan`. Method tersebut kemudian diimplementasikan kembali pada subclass `PertandinganLiga` dan `PertandinganFinal` dengan bentuk informasi yang berbeda sesuai dengan jenis pertandingan.
+
+Pada class `PertandinganLiga`, method `getInfoPertandingan()` digunakan untuk menampilkan informasi pertandingan liga, termasuk nomor pekan. Sedangkan pada class `PertandinganFinal`, method tersebut digunakan untuk menampilkan informasi pertandingan final, termasuk babak pertandingan.
+
+Contoh kode program overriding:
+
+<img width="1414" height="116" alt="image" src="https://github.com/user-attachments/assets/66252fe1-1967-45f4-b4f8-c334359d9232" />
+
+Contoh kode program overloading:
+
+<img width="482" height="214" alt="image" src="https://github.com/user-attachments/assets/cf0caddd-e9a6-4915-bd05-a7f656f4412d" />
+
+Kedua method memiliki nama yang sama, tetapi memiliki parameter yang berbeda. Method pertama tidak memiliki parameter, sedangkan method kedua memiliki parameter boolean. Hal tersebut merupakan penerapan method overloading.
+
+## Polymorphism
+
+Polymorphism diterapkan dengan menggunakan reference dari class Pertandingan untuk menyimpan object dari subclass PertandinganLiga maupun PertandinganFinal.
+
+## Abstract
+
+Abstraction diterapkan dengan menjadikan class Pertandingan sebagai abstract class.
+
+Class `Pertandingan` digunakan sebagai dasar atau rancangan umum untuk jenis-jenis pertandingan. Class tersebut tidak dibuat menjadi object secara langsung, tetapi diwariskan kepada subclass `PertandinganLiga` dan `PertandinganFinal`.
+
+Selain itu, method `getInfoPertandingan()` dibuat sebagai abstract method. Artinya, subclass yang mewarisi class Pertandingan wajib memberikan implementasi terhadap method tersebut.
+
+Dengan menggunakan abstraction, informasi umum seperti ID pertandingan, tanggal, lokasi, tim kandang, tim tandang, dan status dapat ditempatkan pada parent class, sedangkan informasi khusus untuk pertandingan liga dan pertandingan final dapat diterapkan pada masing-masing subclass.
+
+Method `getInfoPertandingan()` yang dipanggil akan menyesuaikan dengan object sebenarnya.
+
+Jika object merupakan `PertandinganLiga`, maka implementasi `getInfoPertandingan()` milik `PertandinganLiga` yang dijalankan. Jika object merupakan `PertandinganFinal`, maka implementasi milik `PertandinganFinal` yang dijalankan.
+
+Hal tersebut merupakan contoh runtime polymorphism, karena method yang dijalankan ditentukan berdasarkan object yang digunakan pada saat program berjalan.
+
+## Interface
+
+Interface digunakan untuk memisahkan aturan validasi dari proses utama program. Dengan demikian, validasi input dapat dibuat lebih terstruktur dan dapat digunakan kembali apabila nantinya terdapat class lain yang membutuhkan aturan validasi yang sama.
+
+Interface `ValidasiInput` merupakan pengembangan tambahan (value-add) dalam penerapan konsep Object-Oriented Programming pada program ini.
+
+<img width="422" height="258" alt="image" src="https://github.com/user-attachments/assets/ceaed272-311e-4cbd-829c-97e932efecc1" />
+
+Validasi Input
+
+Program juga menerapkan validasi input untuk mencegah data yang tidak sesuai masuk ke dalam sistem.
+
+Validasi yang diterapkan antara lain:
+
+- Input angka harus berupa angka.
+- Input nama tidak boleh kosong.
+- Skor pertandingan tidak boleh bernilai negatif.
+- Pertandingan hanya dapat ditambahkan apabila minimal terdapat dua tim.
+- Tim yang dipilih untuk pertandingan harus berasal dari data tim yang tersedia.
+
+Pada proses input angka, program menggunakan try-catch untuk menangani kesalahan ketika pengguna memasukkan data yang bukan angka.
