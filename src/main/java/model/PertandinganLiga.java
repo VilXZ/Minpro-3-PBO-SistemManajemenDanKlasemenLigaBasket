@@ -9,29 +9,52 @@ package model;
  * @author kidst
  */
 public class PertandinganLiga extends Pertandingan {
+
     private int pekan;
-    
-    public PertandinganLiga(int idPertandingan, String tanggal, String lokasi,
-                            String timKandang, String timTandang, String status, int pekan){
-        super(idPertandingan, tanggal, lokasi, timKandang, timTandang, status);
-    
+
+    public PertandinganLiga(
+            int idPertandingan,
+            String tanggal,
+            String lokasi,
+            String timKandang,
+            String timTandang,
+            String status,
+            int pekan) {
+
+        super(
+                idPertandingan,
+                tanggal,
+                lokasi,
+                timKandang,
+                timTandang,
+                status
+        );
+
         this.pekan = pekan;
     }
-    
-    public int getPekan(){
-        return pekan;
-    }
-    
-    public void setPekan(int pekan){
-        this.pekan = pekan;
-    }
-    
+
     @Override
     public String getInfoPertandingan() {
-    return "Pertandingan Liga: " + getTimKandang()
-            + " vs " + getTimTandang()
-            + " | Pekan: " + pekan
-            + " | Lokasi: " + getLokasi()
-            + " | Status: " + getStatus();
+
+        return "Pertandingan Liga | "
+                + getTimKandang()
+                + " vs "
+                + getTimTandang()
+                + " | Pekan "
+                + pekan
+                + " | "
+                + getTanggal()
+                + " | "
+                + getLokasi()
+                + " | Status: "
+                + getStatus();
+    }
+
+    public int getPekan() {
+        return pekan;
+    }
+
+    public void setPekan(int pekan) {
+        this.pekan = pekan;
     }
 }

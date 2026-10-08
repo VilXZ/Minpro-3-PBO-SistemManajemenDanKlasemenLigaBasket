@@ -10,54 +10,63 @@ import java.util.ArrayList;
  *
  * @author kidst
  */
-
 public class Tim {
 
     private int idTim;
     private String namaTim;
     private String kota;
     private String pelatih;
-    
-    public Tim(int idTim, String namaTim, String kota, String pelatih) {
+
+    public Tim(
+            int idTim,
+            String namaTim,
+            String kota,
+            String pelatih) {
+
         this.idTim = idTim;
         this.namaTim = namaTim;
         this.kota = kota;
         this.pelatih = pelatih;
     }
-    
+
     public int getIdTim() {
         return idTim;
+    }
+
+    public void setIdTim(int idTim) {
+        this.idTim = idTim;
     }
 
     public String getNamaTim() {
         return namaTim;
     }
 
-    public String getKota() {
-        return kota;
-    }
-
-    public String getPelatih() {
-        return pelatih;
-    }
-    
     public void setNamaTim(String namaTim) {
         this.namaTim = namaTim;
+    }
+
+    public String getKota() {
+        return kota;
     }
 
     public void setKota(String kota) {
         this.kota = kota;
     }
 
+    public String getPelatih() {
+        return pelatih;
+    }
+
     public void setPelatih(String pelatih) {
         this.pelatih = pelatih;
     }
-    
-    static void tampilkanDaftarTim(ArrayList<Tim> listBasket) {
-    for (int i = 0; i < listBasket.size(); i++) {
-        System.out.println(
-            (i + 1) + ". " + listBasket.get(i).getNamaTim()
-        );
+
+    @Override
+    public String toString() {
+
+        return "ID: " + idTim
+                + " | Tim: " + namaTim
+                + " | Kota: " + kota
+                + " | Pelatih: " + pelatih;
     }
-}
 }

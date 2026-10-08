@@ -14,19 +14,39 @@ public class HasilPertandingan {
     private int idPertandingan;
     private int skorKandang;
     private int skorTandang;
+    private String namaTimKandang;
+    private String namaTimTandang;
     private String pemenang;
-    
-    public HasilPertandingan(int idHasil, int idPertandingan,
-                             int skorKandang, int skorTandang,
-                             String pemenang) {
+
+    public HasilPertandingan(
+            int idHasil,
+            int idPertandingan,
+            int skorKandang,
+            int skorTandang,
+            String namaTimKandang,
+            String namaTimTandang) {
 
         this.idHasil = idHasil;
         this.idPertandingan = idPertandingan;
         this.skorKandang = skorKandang;
         this.skorTandang = skorTandang;
-        this.pemenang = pemenang;
+        this.namaTimKandang = namaTimKandang;
+        this.namaTimTandang = namaTimTandang;
+
+        tentukanPemenang();
     }
-    
+
+    private void tentukanPemenang() {
+
+        if (skorKandang > skorTandang) {
+            pemenang = namaTimKandang;
+        } else if (skorTandang > skorKandang) {
+            pemenang = namaTimTandang;
+        } else {
+            pemenang = "Seri";
+        }
+    }
+
     public int getIdHasil() {
         return idHasil;
     }
@@ -46,16 +66,20 @@ public class HasilPertandingan {
     public String getPemenang() {
         return pemenang;
     }
-    
-    public void setSkorKandang(int skorKandang) {
-        this.skorKandang = skorKandang;
-    }
 
-    public void setSkorTandang(int skorTandang) {
-        this.skorTandang = skorTandang;
-    }
+    @Override
+    public String toString() {
 
-    public void setPemenang(String pemenang) {
-        this.pemenang = pemenang;
+        return "ID Hasil: " + idHasil
+                + " | Pertandingan: "
+                + namaTimKandang
+                + " vs "
+                + namaTimTandang
+                + " | Skor: "
+                + skorKandang
+                + " - "
+                + skorTandang
+                + " | Pemenang: "
+                + pemenang;
     }
 }

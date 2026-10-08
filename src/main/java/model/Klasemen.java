@@ -15,9 +15,13 @@ public class Klasemen {
     private int jumlahMenang;
     private int jumlahKalah;
     private int poin;
-    
-    public Klasemen(String tim, int jumlahPertandingan,
-                    int jumlahMenang, int jumlahKalah, int poin) {
+
+    public Klasemen(
+            String tim,
+            int jumlahPertandingan,
+            int jumlahMenang,
+            int jumlahKalah,
+            int poin) {
 
         this.tim = tim;
         this.jumlahPertandingan = jumlahPertandingan;
@@ -25,40 +29,54 @@ public class Klasemen {
         this.jumlahKalah = jumlahKalah;
         this.poin = poin;
     }
-    
+
     public String getTim() {
         return tim;
+    }
+
+    public void setTim(String tim) {
+        this.tim = tim;
     }
 
     public int getJumlahPertandingan() {
         return jumlahPertandingan;
     }
 
-    public int getJumlahMenang() {
-        return jumlahMenang;
-    }
-
-    public int getJumlahKalah() {
-        return jumlahKalah;
-    }
-
-    public int getPoin() {
-        return poin;
-    }
-
     public void setJumlahPertandingan(int jumlahPertandingan) {
         this.jumlahPertandingan = jumlahPertandingan;
+    }
+
+    public int getJumlahMenang() {
+        return jumlahMenang;
     }
 
     public void setJumlahMenang(int jumlahMenang) {
         this.jumlahMenang = jumlahMenang;
     }
 
+    public int getJumlahKalah() {
+        return jumlahKalah;
+    }
+
     public void setJumlahKalah(int jumlahKalah) {
         this.jumlahKalah = jumlahKalah;
     }
 
+    public int getPoin() {
+        return poin;
+    }
+
     public void setPoin(int poin) {
         this.poin = poin;
+    }
+
+    @Override
+    public String toString() {
+
+        return tim
+                + " | Main: " + jumlahPertandingan
+                + " | Menang: " + jumlahMenang
+                + " | Kalah: " + jumlahKalah
+                + " | Poin: " + poin;
     }
 }
