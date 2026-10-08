@@ -112,6 +112,7 @@ Interface `ValidasiInput` merupakan pengembangan tambahan (value-add) dalam pene
 
 <img width="422" height="258" alt="image" src="https://github.com/user-attachments/assets/ceaed272-311e-4cbd-829c-97e932efecc1" />
 
+
 Validasi Input
 
 Program juga menerapkan validasi input untuk mencegah data yang tidak sesuai masuk ke dalam sistem.
