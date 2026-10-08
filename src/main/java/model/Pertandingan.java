@@ -33,7 +33,6 @@ public abstract class Pertandingan {
         this.status = status;
     }
 
-    // Abstract method
     public abstract String getInfoPertandingan();
 
     // Overloading

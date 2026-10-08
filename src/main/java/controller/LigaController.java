@@ -40,10 +40,6 @@ public class LigaController implements ValidasiInput {
         isiDummyData();
     }
 
-    // ==========================================
-    // PROGRAM UTAMA
-    // ==========================================
-
     public void jalankan() {
 
         int pilihan;
@@ -88,10 +84,6 @@ public class LigaController implements ValidasiInput {
 
         view.tutupScanner();
     }
-
-    // ==========================================
-    // MENU TIM
-    // ==========================================
 
     private void menuTim() {
 
@@ -236,11 +228,9 @@ public class LigaController implements ValidasiInput {
         Tim tim = cariTim(id);
 
         if (tim == null) {
-
             view.tampilkanPesan(
                     "Tim tidak ditemukan."
             );
-
             return;
         }
 
@@ -254,18 +244,12 @@ public class LigaController implements ValidasiInput {
     private Tim cariTim(int id) {
 
         for (Tim tim : daftarTim) {
-
             if (tim.getIdTim() == id) {
                 return tim;
             }
         }
-
         return null;
     }
-
-    // ==========================================
-    // MENU PERTANDINGAN
-    // ==========================================
 
     private void menuPertandingan() {
 
@@ -304,18 +288,15 @@ public class LigaController implements ValidasiInput {
                             "Pilihan tidak valid!"
                     );
             }
-
         } while (pilihan != 4);
     }
 
     private void tambahPertandingan() {
 
         if (daftarTim.size() < 2) {
-
             view.tampilkanPesan(
                     "Minimal harus ada 2 tim."
             );
-
             return;
         }
 
@@ -329,11 +310,9 @@ public class LigaController implements ValidasiInput {
         );
 
         if (cariPertandingan(id) != null) {
-
             view.tampilkanPesan(
                     "ID pertandingan sudah digunakan!"
             );
-
             return;
         }
 
@@ -352,14 +331,11 @@ public class LigaController implements ValidasiInput {
         Tim kandang = cariTim(idKandang);
 
         if (kandang == null) {
-
             view.tampilkanPesan(
                     "Tim kandang tidak ditemukan."
             );
-
             return;
         }
-
         int idTandang = view.inputInt(
                 "ID Tim Tandang: "
         );
@@ -367,7 +343,6 @@ public class LigaController implements ValidasiInput {
         Tim tandang = cariTim(idTandang);
 
         if (tandang == null) {
-
             view.tampilkanPesan(
                     "Tim tandang tidak ditemukan."
             );
@@ -376,7 +351,6 @@ public class LigaController implements ValidasiInput {
         }
 
         if (idKandang == idTandang) {
-
             view.tampilkanPesan(
                     "Tim kandang dan tim tandang tidak boleh sama."
             );
@@ -392,7 +366,7 @@ public class LigaController implements ValidasiInput {
         int jenis = view.inputInt(
                 "Pilih jenis: "
         );
-
+        
         Pertandingan pertandingan;
 
         if (jenis == 1) {
@@ -400,7 +374,6 @@ public class LigaController implements ValidasiInput {
             int pekan = view.inputInt(
                     "Pekan ke: "
             );
-
             pertandingan = new PertandinganLiga(
                     id,
                     tanggal,
@@ -416,7 +389,6 @@ public class LigaController implements ValidasiInput {
             String babak = view.inputString(
                     "Babak final: "
             );
-
             pertandingan = new PertandinganFinal(
                     id,
                     tanggal,
@@ -432,10 +404,8 @@ public class LigaController implements ValidasiInput {
             view.tampilkanPesan(
                     "Jenis pertandingan tidak valid."
             );
-
             return;
         }
-
         daftarPertandingan.add(pertandingan);
 
         view.tampilkanPesan(
@@ -449,17 +419,13 @@ public class LigaController implements ValidasiInput {
         System.out.println("===== DAFTAR PERTANDINGAN =====");
 
         if (daftarPertandingan.isEmpty()) {
-
             view.tampilkanPesan(
                     "Belum ada pertandingan."
             );
-
             return;
         }
 
         for (Pertandingan pertandingan : daftarPertandingan) {
-
-            // Polymorphism overriding
             System.out.println(
                     pertandingan.getInfoPertandingan()
             );
@@ -478,11 +444,9 @@ public class LigaController implements ValidasiInput {
                 cariPertandingan(id);
 
         if (pertandingan == null) {
-
             view.tampilkanPesan(
                     "Pertandingan tidak ditemukan."
             );
-
             return;
         }
 
@@ -501,13 +465,8 @@ public class LigaController implements ValidasiInput {
                 return pertandingan;
             }
         }
-
         return null;
     }
-
-    // ==========================================
-    // MENU HASIL
-    // ==========================================
 
     private void menuHasil() {
 
@@ -539,11 +498,8 @@ public class LigaController implements ValidasiInput {
                     break;
 
                 default:
-                    view.tampilkanPesan(
-                            "Pilihan tidak valid."
-                    );
+                    view.tampilkanPesan("Pilihan tidak valid.");
             }
-
         } while (pilihan != 3);
     }
 
@@ -559,58 +515,35 @@ public class LigaController implements ValidasiInput {
                 cariPertandingan(idPertandingan);
 
         if (pertandingan == null) {
-
-            view.tampilkanPesan(
-                    "Pertandingan tidak ditemukan."
-            );
-
+            view.tampilkanPesan("Pertandingan tidak ditemukan.");
             return;
         }
 
-        int idHasil = view.inputInt(
-                "ID Hasil: "
-        );
+        int idHasil = view.inputInt("ID Hasil: ");
 
-        int skorKandang = view.inputInt(
-                "Skor tim kandang: "
-        );
+        int skorKandang = view.inputInt("Skor tim kandang: ");
 
-        int skorTandang = view.inputInt(
-                "Skor tim tandang: "
-        );
+        int skorTandang = view.inputInt("Skor tim tandang: ");
 
         if (!validasiSkor(skorKandang)
                 || !validasiSkor(skorTandang)) {
 
-            view.tampilkanPesan(
-                    "Skor tidak boleh negatif."
-            );
-
+            view.tampilkanPesan("Skor tidak boleh negatif.");
             return;
         }
 
         HasilPertandingan hasil =
                 new HasilPertandingan(
-                        idHasil,
-                        idPertandingan,
-                        skorKandang,
-                        skorTandang,
-                        pertandingan.getTimKandang(),
-                        pertandingan.getTimTandang()
+                        idHasil, idPertandingan, skorKandang, skorTandang, pertandingan.getTimKandang(), pertandingan.getTimTandang()
                 );
 
         daftarHasil.add(hasil);
 
         pertandingan.setStatus("Selesai");
 
-        view.tampilkanPesan(
-                "Hasil berhasil ditambahkan."
-        );
+        view.tampilkanPesan("Hasil berhasil ditambahkan.");
 
-        view.tampilkanPesan(
-                "Pemenang otomatis: "
-                + hasil.getPemenang()
-        );
+        view.tampilkanPesan("Pemenang otomatis: " + hasil.getPemenang());
     }
 
     private void tampilkanHasil() {
@@ -619,11 +552,7 @@ public class LigaController implements ValidasiInput {
         System.out.println("===== DAFTAR HASIL =====");
 
         if (daftarHasil.isEmpty()) {
-
-            view.tampilkanPesan(
-                    "Belum ada hasil pertandingan."
-            );
-
+            view.tampilkanPesan("Belum ada hasil pertandingan.");
             return;
         }
 
@@ -632,10 +561,6 @@ public class LigaController implements ValidasiInput {
         }
     }
 
-    // ==========================================
-    // KLASEMEN
-    // ==========================================
-
     private void tampilkanKlasemen() {
 
         System.out.println();
@@ -643,10 +568,7 @@ public class LigaController implements ValidasiInput {
 
         if (daftarTim.isEmpty()) {
 
-            view.tampilkanPesan(
-                    "Belum ada data tim."
-            );
-
+            view.tampilkanPesan("Belum ada data tim.");
             return;
         }
 
@@ -703,16 +625,11 @@ public class LigaController implements ValidasiInput {
 
             daftarKlasemen.add(
                     new Klasemen(
-                            tim.getNamaTim(),
-                            main,
-                            menang,
-                            kalah,
-                            poin
+                            tim.getNamaTim(), main, menang, kalah, poin
                     )
             );
         }
 
-        // Sorting berdasarkan poin tertinggi
         for (int i = 0;
              i < daftarKlasemen.size() - 1;
              i++) {
@@ -747,36 +664,22 @@ public class LigaController implements ValidasiInput {
             System.out.println(
                     posisi + ". " + klasemen
             );
-
             posisi++;
         }
     }
 
-    // ==========================================
-    // DUMMY DATA
-    // ==========================================
-
     private void isiDummyData() {
 
         Tim lakers = new Tim(
-                1,
-                "Los Angeles Lakers",
-                "Los Angeles",
-                "JJ Redick"
+                1, "Los Angeles Lakers", "Los Angeles", "JJ Redick"
         );
 
         Tim warriors = new Tim(
-                2,
-                "Golden State Warriors",
-                "San Francisco",
-                "Steve Kerr"
+                2, "Golden State Warriors", "San Francisco", "Steve Kerr"
         );
 
         Tim celtics = new Tim(
-                3,
-                "Boston Celtics",
-                "Boston",
-                "Joe Mazzulla"
+                3, "Boston Celtics", "Boston", "Joe Mazzulla"
         );
 
         daftarTim.add(lakers);
@@ -785,33 +688,18 @@ public class LigaController implements ValidasiInput {
 
         Pertandingan pertandingan =
                 new PertandinganLiga(
-                        1,
-                        "22-10-2025",
-                        "Crypto.com Arena",
-                        "Los Angeles Lakers",
-                        "Golden State Warriors",
-                        "Selesai",
-                        1
+                        1,"22-10-2025","Crypto.com Arena","Los Angeles Lakers","Golden State Warriors","Selesai",1
                 );
 
         daftarPertandingan.add(pertandingan);
 
         HasilPertandingan hasil =
                 new HasilPertandingan(
-                        1,
-                        1,
-                        120,
-                        115,
-                        "Los Angeles Lakers",
-                        "Golden State Warriors"
+                        1, 1, 120, 115, "Los Angeles Lakers", "Golden State Warriors"
                 );
 
         daftarHasil.add(hasil);
     }
-
-    // ==========================================
-    // IMPLEMENTASI INTERFACE
-    // ==========================================
 
     @Override
     public boolean validasiNama(String nama) {

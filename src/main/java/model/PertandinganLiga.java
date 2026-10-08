@@ -36,18 +36,7 @@ public class PertandinganLiga extends Pertandingan {
     @Override
     public String getInfoPertandingan() {
 
-        return "Pertandingan Liga | "
-                + getTimKandang()
-                + " vs "
-                + getTimTandang()
-                + " | Pekan "
-                + pekan
-                + " | "
-                + getTanggal()
-                + " | "
-                + getLokasi()
-                + " | Status: "
-                + getStatus();
+        return "Pertandingan Liga | " + getTimKandang() + " vs " + getTimTandang() + " | Pekan " + pekan + " | " + getTanggal() + " | " + getLokasi() + " | Status: " + getStatus();
     }
 
     public int getPekan() {
